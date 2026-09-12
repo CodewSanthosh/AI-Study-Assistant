@@ -1,0 +1,30 @@
+# Environments
+.env
+.env.*
+!.env.example
+
+# Python / Backend
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+backend/venv/
+backend/__pycache__/
+*.sqlite3
+
+# Node / Frontend
+node_modules/
+frontend/node_modules/
+dist/
+build/
+.npm
+npm-debug.log
+
+# Mac/OS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/

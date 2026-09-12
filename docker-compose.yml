@@ -1,0 +1,14 @@
+services:
+  db:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_USER: ai_study_user
+      POSTGRES_PASSWORD: local_password
+      POSTGRES_DB: ai_study_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
