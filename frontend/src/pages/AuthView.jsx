@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Loader2, Mail, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,7 +12,11 @@ export default function AuthView() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const { login } = useAuth();
+  const { user, login } = useAuth();
+  const navigate = useNavigate();
+
+  // If already logged in, redirect to dashboard
+  if (user) return <Navigate to="/" replace />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,6 +52,7 @@ export default function AuthView() {
       }
 
       login(data.user, data.access_token);
+      navigate('/', { replace: true });
     } catch (err) {
       setError(err.message);
     } finally {
