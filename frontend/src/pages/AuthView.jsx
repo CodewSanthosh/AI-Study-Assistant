@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { Loader2, Mail, Lock } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import API_BASE_URL from '../config';
 
 export default function AuthView() {
   const [isLogin, setIsLogin] = useState(true);
@@ -17,7 +18,7 @@ export default function AuthView() {
     setIsLoading(true);
     setError('');
 
-    const url = isLogin ? 'http://localhost:8000/auth/login' : 'http://localhost:8000/auth/register';
+    const url = isLogin ? `${API_BASE_URL}/auth/login` : `${API_BASE_URL}/auth/register`;
 
     try {
       let body, headers;

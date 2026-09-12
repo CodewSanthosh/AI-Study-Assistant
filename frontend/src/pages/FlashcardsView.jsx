@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Loader2, RefreshCw, ChevronLeft, ChevronRight, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config';
 
 export default function FlashcardsView() {
   const { token } = useAuth();
@@ -22,7 +23,7 @@ export default function FlashcardsView() {
     setIsFlipped(false);
 
     try {
-      const response = await fetch('http://localhost:8000/flashcards/', {
+      const response = await fetch(`${API_BASE_URL}/flashcards/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, User, Bot, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config';
 
 export default function TutorChat() {
   const { token } = useAuth();
@@ -22,7 +23,7 @@ export default function TutorChat() {
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const response = await fetch('http://localhost:8000/chat/history', {
+        const response = await fetch(`${API_BASE_URL}/chat/history`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (response.ok) {
@@ -52,7 +53,7 @@ export default function TutorChat() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/ask/', {
+      const response = await fetch(`${API_BASE_URL}/ask/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

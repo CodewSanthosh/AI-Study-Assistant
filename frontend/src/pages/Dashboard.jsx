@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { UploadCloud, FileText, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config';
 
 export default function Dashboard() {
   const { user, token } = useAuth();
@@ -53,7 +54,7 @@ export default function Dashboard() {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:8000/upload/', {
+      const response = await fetch(`${API_BASE_URL}/upload/`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`

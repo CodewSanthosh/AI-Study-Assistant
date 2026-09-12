@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Loader2, CheckCircle2, XCircle, ChevronRight, RefreshCw, Trophy, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config';
 
 export default function QuizView() {
   const { token } = useAuth();
@@ -26,7 +27,7 @@ export default function QuizView() {
     setSelectedAnswer(null);
 
     try {
-      const response = await fetch('http://localhost:8000/quiz/', {
+      const response = await fetch(`${API_BASE_URL}/quiz/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
